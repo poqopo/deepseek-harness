@@ -28,6 +28,7 @@ The workflow group lets an agent run orchestration scripts that delegate work to
 | [`workflow-ptc`](workflow-ptc/README.md) | Runs workflow scripts through the shared sandboxed PTC Node process runtime | registers on `ctx.workflowEngine` |
 | [`tool-workflow`](tool-workflow/README.md) | Gives the model the `workflow` tool for scripted multi-agent orchestration | registers on `ctx.tools` |
 | [`tool-ralph`](tool-ralph/README.md) | Gives the model the `ralph` tool for fresh-agent iterative loops | registers on `ctx.tools` |
+| [`tool-simple-ralph`](tool-simple-ralph/README.md) | Gives the model `simple_ralph` for fresh-worker coding iterations with independent evaluation | registers on `ctx.tools` |
 
 -----
 

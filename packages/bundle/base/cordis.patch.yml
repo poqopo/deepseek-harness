@@ -451,6 +451,14 @@
         subagentProvider: spawn
         maxRounds: 64
 
+    # Fresh workers and independent evaluation for coding objectives.
+    - id: tool-simple-ralph
+      name: '@deepseek-ai/dsh-tool-simple-ralph'
+      disabled: true
+      config:
+        subagentProvider: spawn
+        maxIterations: 5
+
     # Consecutive-repeat reminders on the tool chain.
     - id: repeat-tool-reminder
       name: '@deepseek-ai/dsh-repeat-tool-reminder'
