@@ -1,0 +1,67 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/workflow/tool-strategy-ralph/README.md
+/:
+  en: 75837d760bdba87a
+  zh: 2ff2f9e45ec02e6c
+/deepseek-ai-dsh-tool-strategy-ralph:
+  en: f309948ecb640a16
+  zh: 559b64bc842e6dc3
+/deepseek-ai-dsh-tool-strategy-ralph/summary:
+  en: b6988f768b66585c
+  zh: a4f5125ecf2f8b83
+/deepseek-ai-dsh-tool-strategy-ralph/table-of-contents:
+  en: d152484eb41ac6b4
+  zh: 5a6d6609945e58cb
+/deepseek-ai-dsh-tool-strategy-ralph/use-this-package:
+  en: 7a153c03efc4e68a
+  zh: 4666f4c5b3c52ce0
+/deepseek-ai-dsh-tool-strategy-ralph/use-this-package/when-to-choose-it:
+  en: 65aee246972cef00
+  zh: 777d68fa29d5046b
+/deepseek-ai-dsh-tool-strategy-ralph/use-this-package/minimal-configuration:
+  en: 510ba0cde022dfa1
+  zh: ce2f44b6bc576008
+/deepseek-ai-dsh-tool-strategy-ralph/understand-the-implementation:
+  en: 8a23ae6fc18d0c30
+  zh: 81ca990535fd00a7
+/deepseek-ai-dsh-tool-strategy-ralph/further-exploration:
+  en: 1e2cde0c954fe1b2
+  zh: d7115f7f174ce19f
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience:
+  en: 215e7ba838619b7b
+  zh: a311da3843709f90
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/strategy-research-guidance:
+  en: b614731a3e3b29e3
+  zh: 2c54dd7699d8b203
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/strategy-research-guidance/what-the-model-sees:
+  en: d17c4107db1d7aaa
+  zh: c71157f15a31c50e
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/strategy-research-guidance/what-the-model-sees/prompt-text:
+  en: e28e701f1a269908
+  zh: 83449f4db3240e8c
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/strategy-research-guidance/token-effect:
+  en: 6ad3cea72cd79cc3
+  zh: ec4f38c1dd683953
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/strategy-research-guidance/kv-cache-effect:
+  en: 3a33add467c4c032
+  zh: e58b835f484fe2f5
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/tool-schema:
+  en: e4c7376d4f29dbd5
+  zh: 6b7a9eaf69c9ea53
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/tool-schema/what-the-model-sees:
+  en: bcc4d2148b06a56d
+  zh: ccb8789ea8c2bc4d
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/tool-schema/token-effect:
+  en: 2e561bdeae0a9be6
+  zh: f6e83f6e8728736e
+/deepseek-ai-dsh-tool-strategy-ralph/model-experience/tool-schema/kv-cache-effect:
+  en: c5c274e208b7151d
+  zh: b08bf9a0a3274d23
+/deepseek-ai-dsh-tool-strategy-ralph/known-limitations-and-deferred-work:
+  en: b038cbf4e196664d
+  zh: 28ceb17695d9a367
+/deepseek-ai-dsh-tool-strategy-ralph/known-limitations-and-deferred-work/dev-note:
+  en: e67f633dc6fe7773
+  zh: 6c5f9788c6536776

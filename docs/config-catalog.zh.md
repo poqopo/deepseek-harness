@@ -3844,6 +3844,29 @@ export interface Config {
 ```
 <!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-str-replace-editor -->
 
+<!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-tool-strategy-ralph -->
+<a id="deepseek-aidsh-tool-strategy-ralph"></a>
+
+## `@deepseek-ai/dsh-tool-strategy-ralph`
+
+- `inject`: `tools` · `workflowEngine` · `subagents` · `systemPrompt`
+- `source`: [`packages/workflow/tool-strategy-ralph/src/index.ts:19`](../packages/workflow/tool-strategy-ralph/src/index.ts)
+
+```ts config-catalog
+/** Deployment policy for bounded strategy research. */
+export interface Config {
+  /** Fresh structured-output provider used for analysts and evaluators. */
+  subagentProvider?: string
+  /** Default and maximum strategy count per call. */
+  maxIterations?: number
+  /** Maximum serialized size of one child report. */
+  maxHandoffChars?: number
+  /** Maximum rendered characters returned to the calling model. */
+  maxResultChars?: number
+}
+```
+<!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-strategy-ralph -->
+
 <!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-tool-subagent -->
 <a id="deepseek-aidsh-tool-subagent"></a>
 

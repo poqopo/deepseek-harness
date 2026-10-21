@@ -40,6 +40,7 @@
 | `@deepseek-ai/dsh-tool-lsp` | `lsp` | `ctx.tools`、`ctx.lsp`、`ctx.systemPrompt` | `tool/call`、`tool/result` | - | lsp 工具将提供方选择和语言服务器子进程置于 ctx.lsp 之后，因此其模型可见 schema 在更换提供方时保持稳定。运行时要求已注册提供方，例如 `@deepseek-ai/dsh-lsp-stdio`；如果没有提供方，查询会返回结构化 `LSP_UNAVAILABLE` 错误，而不会改变 schema。 |
 | `@deepseek-ai/dsh-tool-ralph` | `ralph` | `ctx.tools`、`ctx.workflowEngine`、`ctx.subagents`、`ctx.systemPrompt`、`a calling Agent (exec.agent parents every fresh round)` | `tool/call`、`tool/result`、`workflow and child session events during execution` | - | 固定的前台工作流会在每个 Round 启动一个全新的结构化子级；模型只能选择不可变目标和可选的 Round 上限。 |
 | `@deepseek-ai/dsh-tool-simple-ralph` | `simple_ralph` | `ctx.tools`、`ctx.workflowEngine`、`ctx.subagents`、`ctx.systemPrompt`、`a calling Agent (exec.agent parents every worker and evaluator)` | `tool/call`、`tool/result`、`workflow and child session events during execution` | - | 固定工作流会交替运行一个全新的编码 worker 和独立评估器；模型只能选择不可变目标和可选的迭代上限。 |
+| `@deepseek-ai/dsh-tool-strategy-ralph` | `strategy_ralph` | `ctx.tools`、`ctx.workflowEngine`、`ctx.subagents`、`ctx.systemPrompt`、`a calling Agent (exec.agent parents each analyst, evaluator, and reviewer)` | `tool/call`、`tool/result`、`workflow and child session events during execution` | - | 固定工作流会比较有界的本地数据集回测并生成报告；它不连接交易所，也不执行交易。 |
 | `@deepseek-ai/dsh-tool-skill` | `skill` | `ctx.tools`、`ctx.agents`、`ctx.skills` | `tool/call`、`tool/result`、`user/message replacement catalogs via agent.inject()` | - | - |
 | `@deepseek-ai/dsh-tool-session-query` | `session_event_read`、`session_event_search`、`session_event_trace`、`session_search`、`session_trace` | `ctx.tools`、`ctx.systemPrompt`、`ctx.sessionQuery`、`a calling Agent for workspace authority` | `tool/call`、`tool/result` | - | 这 5 个只读工具会隐藏提供方游标，并根据不可变的调用 agent 会话为每个结果授权。该包需要选择启用；需要强制截止时间或限制行内输出的组合还会挂载通用超时或 spill 策略。 |
 | `@deepseek-ai/dsh-tool-subagent` | `list_subagent_models`、`subagent` | `ctx.tools`、`ctx.subagents`、`ctx.systemPrompt`、`用于模型发现和所选路由校验的 ctx.llm` | `tool/call`、`tool/result`、`child session events through the chosen provider` | `subagent`、`subagent_fork` | 注册的委派工具名称取决于加载时 `toolName` 配置（默认为 `subagent`）；上述默认 schema 关闭模型选择，而发现 schema 则展示为已启用 Session 中可用的固定配套工具。Web preset 会在每个新顶层 Session 创建时读取插件页偏好，并为其子 Session 保留该决定；`subagent_fork` 始终使用固定路由。每个实例通过 `modelSelectionSettings`、`backgroundMode` 与 `enableRunInBackground` 独立控制是否读取模型选择设置及其后台行为。 |
@@ -1786,6 +1787,57 @@ lsp 工具将提供方选择和语言服务器子进程置于 ctx.lsp 之后，�
 来源：[`packages/workflow/tool-simple-ralph/src/index.ts`](../packages/workflow/tool-simple-ralph/src/index.ts)
 
 固定工作流会交替运行一个全新的编码 worker 和独立评估器；模型只能选择不可变目标和可选的迭代上限。
+
+<a id="deepseek-aidsh-tool-strategy-ralph"></a>
+
+## `@deepseek-ai/dsh-tool-strategy-ralph`
+
+### `strategy_ralph`
+
+针对本地 BTC 或加密货币数据集运行十轮顺序的全新 agent 回测。每种策略都会生成一份经验证的报告和一份总体摘要。仅供研究，不执行交易。
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "datasetPath": {
+      "type": "string",
+      "description": "Workspace-relative path to a local OHLCV JSON dataset."
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Asset symbol, for example BTCUSDT."
+    },
+    "maxIterations": {
+      "type": "number",
+      "description": "Number of strategies to run, from 1 through 10; use 10 for the complete set."
+    },
+    "feePerSide": {
+      "type": "number",
+      "description": "Fee assumption passed to analysts, as a decimal fraction."
+    },
+    "slippagePerSide": {
+      "type": "number",
+      "description": "Adverse slippage assumption passed to analysts, as a decimal fraction."
+    },
+    "reportDir": {
+      "type": "string",
+      "description": "Workspace-relative report directory."
+    },
+    "summaryPath": {
+      "type": "string",
+      "description": "Workspace-relative summary Markdown path."
+    }
+  },
+  "required": [
+    "datasetPath"
+  ]
+}
+```
+
+来源：[`packages/workflow/tool-strategy-ralph/src/index.ts`](../packages/workflow/tool-strategy-ralph/src/index.ts)
+
+固定工作流会比较有界的本地数据集回测并生成报告；它不连接交易所，也不执行交易。
 
 <a id="deepseek-aidsh-tool-skill"></a>
 

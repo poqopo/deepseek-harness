@@ -81,6 +81,7 @@
     "@deepseek-ai/dsh-tool-pwsh-persistent": "workspace:*",
     "@deepseek-ai/dsh-tool-ralph": "workspace:*",
     "@deepseek-ai/dsh-tool-simple-ralph": "workspace:*",
+    "@deepseek-ai/dsh-tool-strategy-ralph": "workspace:*",
     "@deepseek-ai/dsh-tool-schedule": "workspace:*",
     "@deepseek-ai/dsh-tool-skill": "workspace:*",
     "@deepseek-ai/dsh-tool-str-replace-editor": "workspace:*",

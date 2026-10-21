@@ -498,6 +498,7 @@
       "@deepseek-ai/dsh-tool-simple-ralph": ["./packages/workflow/tool-simple-ralph/src"],
       "@deepseek-ai/dsh-tool-skill": ["./packages/skill/tool-skill/src"],
       "@deepseek-ai/dsh-tool-str-replace-editor": ["./packages/fs/tool-str-replace-editor/src"],
+      "@deepseek-ai/dsh-tool-strategy-ralph": ["./packages/workflow/tool-strategy-ralph/src"],
       "@deepseek-ai/dsh-tool-subagent": ["./packages/subagent/tool-subagent/src"],
       "@deepseek-ai/dsh-tool-subagent-control": ["./packages/subagent/tool-subagent-control/src"],
       "@deepseek-ai/dsh-tool-terminal": ["./packages/terminal/tool-terminal/src"],

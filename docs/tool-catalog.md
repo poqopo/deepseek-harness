@@ -36,6 +36,7 @@ This table connects model-visible tool names to the plugin package and service s
 | `@deepseek-ai/dsh-tool-lsp` | `lsp` | `ctx.tools`, `ctx.lsp`, `ctx.systemPrompt` | `tool/call`, `tool/result` | - | The lsp tool keeps provider selection and language-server subprocesses behind ctx.lsp, so its model-visible schema stays stable across providers. Requires a registered provider (e.g. `@deepseek-ai/dsh-lsp-stdio`) at runtime; without one, a query returns the structured `LSP_UNAVAILABLE` error rather than changing the schema. |
 | `@deepseek-ai/dsh-tool-ralph` | `ralph` | `ctx.tools`, `ctx.workflowEngine`, `ctx.subagents`, `ctx.systemPrompt`, `a calling Agent (exec.agent parents every fresh round)` | `tool/call`, `tool/result`, `workflow and child session events during execution` | - | A fixed foreground workflow starts one fresh structured child per round; the model selects only the immutable objective and an optional round cap. |
 | `@deepseek-ai/dsh-tool-simple-ralph` | `simple_ralph` | `ctx.tools`, `ctx.workflowEngine`, `ctx.subagents`, `ctx.systemPrompt`, `a calling Agent (exec.agent parents every worker and evaluator)` | `tool/call`, `tool/result`, `workflow and child session events during execution` | - | A fixed workflow alternates one fresh coding worker with an independent evaluator; the model selects only the immutable objective and an optional iteration limit. |
+| `@deepseek-ai/dsh-tool-strategy-ralph` | `strategy_ralph` | `ctx.tools`, `ctx.workflowEngine`, `ctx.subagents`, `ctx.systemPrompt`, `a calling Agent (exec.agent parents each analyst, evaluator, and reviewer)` | `tool/call`, `tool/result`, `workflow and child session events during execution` | - | A fixed workflow compares a bounded set of local-dataset backtests and writes reports; it has no exchange connection or trade execution. |
 | `@deepseek-ai/dsh-tool-skill` | `skill` | `ctx.tools`, `ctx.agents`, `ctx.skills` | `tool/call`, `tool/result`, `user/message replacement catalogs via agent.inject()` | - | - |
 | `@deepseek-ai/dsh-tool-session-query` | `session_event_read`, `session_event_search`, `session_event_trace`, `session_search`, `session_trace` | `ctx.tools`, `ctx.systemPrompt`, `ctx.sessionQuery`, `a calling Agent for workspace authority` | `tool/call`, `tool/result` | - | The five read-only tools hide provider cursors and authorize every result from the immutable calling agent session. The package is opt-in; compositions that need enforced deadlines or bounded inline output also mount the generic timeout or spill policies. |
 | `@deepseek-ai/dsh-tool-subagent` | `list_subagent_models`, `subagent` | `ctx.tools`, `ctx.subagents`, `ctx.systemPrompt`, `ctx.llm for model discovery and selected-route validation` | `tool/call`, `tool/result`, `child session events through the chosen provider` | `subagent`, `subagent_fork` | The registered delegation name is the load-time `toolName` config (default `subagent`); the default schema above has model selection off, while the discovery schema is shown as the fixed companion available in an enabled Session. Web presets sample the Plugins preference for each new top-level Session and preserve that decision for its child Sessions; `subagent_fork` remains fixed-route. Each instance independently controls whether it reads model-selection settings and its background behavior through `modelSelectionSettings`, `backgroundMode`, and `enableRunInBackground`. |
@@ -1780,6 +1781,57 @@ Run a bounded autonomous coding loop. Each iteration uses a fresh worker, shared
 Source: [`packages/workflow/tool-simple-ralph/src/index.ts`](../packages/workflow/tool-simple-ralph/src/index.ts)
 
 A fixed workflow alternates one fresh coding worker with an independent evaluator; the model selects only the immutable objective and an optional iteration limit.
+
+<a id="deepseek-aidsh-tool-strategy-ralph"></a>
+
+## `@deepseek-ai/dsh-tool-strategy-ralph`
+
+### `strategy_ralph`
+
+Run ten sequential fresh-agent backtests over a local BTC/crypto dataset. Produces one verified report per strategy and an overall summary. Research only; no trade execution.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "datasetPath": {
+      "type": "string",
+      "description": "Workspace-relative path to a local OHLCV JSON dataset."
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Asset symbol, for example BTCUSDT."
+    },
+    "maxIterations": {
+      "type": "number",
+      "description": "Number of strategies to run, from 1 through 10; use 10 for the complete set."
+    },
+    "feePerSide": {
+      "type": "number",
+      "description": "Fee assumption passed to analysts, as a decimal fraction."
+    },
+    "slippagePerSide": {
+      "type": "number",
+      "description": "Adverse slippage assumption passed to analysts, as a decimal fraction."
+    },
+    "reportDir": {
+      "type": "string",
+      "description": "Workspace-relative report directory."
+    },
+    "summaryPath": {
+      "type": "string",
+      "description": "Workspace-relative summary Markdown path."
+    }
+  },
+  "required": [
+    "datasetPath"
+  ]
+}
+```
+
+Source: [`packages/workflow/tool-strategy-ralph/src/index.ts`](../packages/workflow/tool-strategy-ralph/src/index.ts)
+
+A fixed workflow compares a bounded set of local-dataset backtests and writes reports; it has no exchange connection or trade execution.
 
 <a id="deepseek-aidsh-tool-skill"></a>
 

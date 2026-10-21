@@ -398,6 +398,14 @@
     - id: tool-workflow
       name: '@deepseek-ai/dsh-tool-workflow'
 
+    # Local historical strategy analysis; this plugin has no trade execution.
+    - id: tool-strategy-ralph
+      name: '@deepseek-ai/dsh-tool-strategy-ralph'
+      disabled: true
+      config:
+        subagentProvider: spawn
+        maxIterations: 10
+
     - id: timeout-policy
       name: '@deepseek-ai/dsh-tool-call-timeout-policy'
 

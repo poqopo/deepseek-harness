@@ -29,6 +29,7 @@ The workflow group lets an agent run orchestration scripts that delegate work to
 | [`tool-workflow`](tool-workflow/README.md) | Gives the model the `workflow` tool for scripted multi-agent orchestration | registers on `ctx.tools` |
 | [`tool-ralph`](tool-ralph/README.md) | Gives the model the `ralph` tool for fresh-agent iterative loops | registers on `ctx.tools` |
 | [`tool-simple-ralph`](tool-simple-ralph/README.md) | Gives the model `simple_ralph` for fresh-worker coding iterations with independent evaluation | registers on `ctx.tools` |
+| [`tool-strategy-ralph`](tool-strategy-ralph/README.md) | Gives the model `strategy_ralph` for local cryptocurrency strategy research | registers on `ctx.tools` |
 
 -----
 

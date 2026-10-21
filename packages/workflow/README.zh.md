@@ -29,6 +29,7 @@ workflow 组让 agent（智能体）可以运行编排脚本，将工作委派�
 | [`tool-workflow`](tool-workflow/README.zh.md) | 把 `workflow` 工具交给模型，用于脚本化多 agent 编排 | 注册到 `ctx.tools` |
 | [`tool-ralph`](tool-ralph/README.zh.md) | 把 `ralph` 工具交给模型，用于全新 agent 迭代循环 | 注册到 `ctx.tools` |
 | [`tool-simple-ralph`](tool-simple-ralph/README.zh.md) | 提供 `simple_ralph`，用于带独立评估的全新 worker 编码迭代 | 注册到 `ctx.tools` |
+| [`tool-strategy-ralph`](tool-strategy-ralph/README.zh.md) | 提供 `strategy_ralph`，用于本地加密货币策略研究 | 注册到 `ctx.tools` |
 
 -----
 

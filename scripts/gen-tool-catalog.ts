@@ -76,6 +76,7 @@ import WorkflowEngine from '@deepseek-ai/dsh-workflow'
 import type { WorkflowRun, WorkflowStartRequest } from '@deepseek-ai/dsh-workflow'
 import * as ToolRalph from '@deepseek-ai/dsh-tool-ralph'
 import * as ToolSimpleRalph from '@deepseek-ai/dsh-tool-simple-ralph'
+import * as ToolStrategyRalph from '@deepseek-ai/dsh-tool-strategy-ralph'
 import * as ToolWorkflow from '@deepseek-ai/dsh-tool-workflow'
 import * as ToolWorkspaceDependencies from '@deepseek-ai/dsh-tool-workspace-dependencies'
 import { githubSlug } from './verify-md-links.ts'
@@ -490,6 +491,21 @@ const TOOL_PACKAGES: ToolPackage[] = [
     },
     note:
       'A fixed workflow alternates one fresh coding worker with an independent evaluator; the model selects only the immutable objective and an optional iteration limit.',
+  },
+  {
+    pkg: '@deepseek-ai/dsh-tool-strategy-ralph',
+    dir: 'tool-strategy-ralph',
+    source: 'packages/workflow/tool-strategy-ralph/src/index.ts',
+    requires: ['ctx.tools', 'ctx.workflowEngine', 'ctx.subagents', 'ctx.systemPrompt', 'a calling Agent (exec.agent parents each analyst, evaluator, and reviewer)'],
+    writes: ['tool/call', 'tool/result', 'workflow and child session events during execution'],
+    async mount(ctx) {
+      await ctx.plugin(SubagentRuntime)
+      registerCatalogSubagentProvider(ctx, 'mock')
+      await ctx.plugin(CatalogWorkflowEngine)
+      await ctx.plugin(ToolStrategyRalph, { subagentProvider: 'mock' })
+    },
+    note:
+      'A fixed workflow compares a bounded set of local-dataset backtests and writes reports; it has no exchange connection or trade execution.',
   },
   {
     pkg: '@deepseek-ai/dsh-tool-skill',
