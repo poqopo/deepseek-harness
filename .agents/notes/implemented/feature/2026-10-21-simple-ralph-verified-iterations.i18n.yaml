@@ -1,0 +1,19 @@
+# Bilingual-pair consistency record for 2026-10-21-simple-ralph-verified-iterations.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-10-21-simple-ralph-verified-iterations.md
+/agent-note-independently-evaluated-coding-iterations:
+  en: 6f19a9d61047a21b
+  zh: 273450d720427f5f
+/agent-note-independently-evaluated-coding-iterations/problem:
+  en: 06c989c1cbbc8ab7
+  zh: 03216f426678604c
+/agent-note-independently-evaluated-coding-iterations/decision:
+  en: 77b48a3beb440f99
+  zh: f301c32d75de3ae7
+/agent-note-independently-evaluated-coding-iterations/alternatives-considered:
+  en: 4c56d704e4522ec2
+  zh: cc4138a9d8d4c7f8
+/agent-note-independently-evaluated-coding-iterations/consequences:
+  en: fb600d1411584e24
+  zh: abfdca5fd79b06d5

@@ -75,6 +75,7 @@ import * as ToolWeb from '@deepseek-ai/dsh-tool-web'
 import WorkflowEngine from '@deepseek-ai/dsh-workflow'
 import type { WorkflowRun, WorkflowStartRequest } from '@deepseek-ai/dsh-workflow'
 import * as ToolRalph from '@deepseek-ai/dsh-tool-ralph'
+import * as ToolSimpleRalph from '@deepseek-ai/dsh-tool-simple-ralph'
 import * as ToolWorkflow from '@deepseek-ai/dsh-tool-workflow'
 import * as ToolWorkspaceDependencies from '@deepseek-ai/dsh-tool-workspace-dependencies'
 import { githubSlug } from './verify-md-links.ts'
@@ -474,6 +475,21 @@ const TOOL_PACKAGES: ToolPackage[] = [
     },
     note:
       'A fixed foreground workflow starts one fresh structured child per round; the model selects only the immutable objective and an optional round cap.',
+  },
+  {
+    pkg: '@deepseek-ai/dsh-tool-simple-ralph',
+    dir: 'tool-simple-ralph',
+    source: 'packages/workflow/tool-simple-ralph/src/index.ts',
+    requires: ['ctx.tools', 'ctx.workflowEngine', 'ctx.subagents', 'ctx.systemPrompt', 'a calling Agent (exec.agent parents every worker and evaluator)'],
+    writes: ['tool/call', 'tool/result', 'workflow and child session events during execution'],
+    async mount(ctx) {
+      await ctx.plugin(SubagentRuntime)
+      registerCatalogSubagentProvider(ctx, 'mock')
+      await ctx.plugin(CatalogWorkflowEngine)
+      await ctx.plugin(ToolSimpleRalph, { subagentProvider: 'mock', maxIterations: 5 })
+    },
+    note:
+      'A fixed workflow alternates one fresh coding worker with an independent evaluator; the model selects only the immutable objective and an optional iteration limit.',
   },
   {
     pkg: '@deepseek-ai/dsh-tool-skill',

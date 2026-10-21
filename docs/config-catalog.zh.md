@@ -3785,6 +3785,29 @@ export interface Config {
 ```
 <!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-session-query -->
 
+<!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-tool-simple-ralph -->
+<a id="deepseek-aidsh-tool-simple-ralph"></a>
+
+## `@deepseek-ai/dsh-tool-simple-ralph`
+
+- `inject`: `tools` · `workflowEngine` · `subagents` · `systemPrompt`
+- `source`: [`packages/workflow/tool-simple-ralph/src/index.ts:19`](../packages/workflow/tool-simple-ralph/src/index.ts)
+
+```ts config-catalog
+/** Deployment policy for Simple Ralph runs. */
+export interface Config {
+  /** Fresh structured-output provider for workers and evaluators. */
+  subagentProvider?: string
+  /** Default and maximum iteration count for one run. */
+  maxIterations?: number
+  /** Maximum serialized size of one worker or evaluator report. */
+  maxHandoffChars?: number
+  /** Maximum rendered characters returned to the calling model. */
+  maxResultChars?: number
+}
+```
+<!-- END GENERATED config-catalog:@deepseek-ai/dsh-tool-simple-ralph -->
+
 <!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-tool-skill -->
 <a id="deepseek-aidsh-tool-skill"></a>
 

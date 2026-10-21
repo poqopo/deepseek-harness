@@ -1,0 +1,67 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/workflow/tool-simple-ralph/README.md
+/:
+  en: dcd6dc2bcab24636
+  zh: 29c673a771876cd3
+/deepseek-ai-dsh-tool-simple-ralph:
+  en: dcf44cdbea81b031
+  zh: c4399c4c40082865
+/deepseek-ai-dsh-tool-simple-ralph/summary:
+  en: dbc23daa40dfacb5
+  zh: a6586c28aba4132f
+/deepseek-ai-dsh-tool-simple-ralph/table-of-contents:
+  en: d152484eb41ac6b4
+  zh: 5a6d6609945e58cb
+/deepseek-ai-dsh-tool-simple-ralph/use-this-package:
+  en: 476a591571d8e7ac
+  zh: 30b084775ffdb107
+/deepseek-ai-dsh-tool-simple-ralph/use-this-package/when-to-choose-it:
+  en: e422e8fa6767dd68
+  zh: 578071faf26bdb0f
+/deepseek-ai-dsh-tool-simple-ralph/use-this-package/minimal-configuration:
+  en: 98865ffd93eb993a
+  zh: 87af67cf7211c608
+/deepseek-ai-dsh-tool-simple-ralph/understand-the-implementation:
+  en: 6e514348ec6ea25d
+  zh: a5ca037b884ce520
+/deepseek-ai-dsh-tool-simple-ralph/further-exploration:
+  en: e21d1297b43fe548
+  zh: ffd0819fed7ff714
+/deepseek-ai-dsh-tool-simple-ralph/model-experience:
+  en: 215e7ba838619b7b
+  zh: a311da3843709f90
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/simple-ralph-guidance:
+  en: f733a069b3d47f48
+  zh: 16220a9b3c25a14b
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/simple-ralph-guidance/what-the-model-sees:
+  en: d17c4107db1d7aaa
+  zh: c71157f15a31c50e
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/simple-ralph-guidance/what-the-model-sees/prompt-text:
+  en: e28e701f1a269908
+  zh: 83449f4db3240e8c
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/simple-ralph-guidance/token-effect:
+  en: 6ad3cea72cd79cc3
+  zh: ec4f38c1dd683953
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/simple-ralph-guidance/kv-cache-effect:
+  en: 3a33add467c4c032
+  zh: e58b835f484fe2f5
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/tool-schema:
+  en: e4c7376d4f29dbd5
+  zh: 6b7a9eaf69c9ea53
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/tool-schema/what-the-model-sees:
+  en: 2d4d5e95d77886bb
+  zh: f583caaaa1048468
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/tool-schema/token-effect:
+  en: 2e561bdeae0a9be6
+  zh: f6e83f6e8728736e
+/deepseek-ai-dsh-tool-simple-ralph/model-experience/tool-schema/kv-cache-effect:
+  en: c5c274e208b7151d
+  zh: b08bf9a0a3274d23
+/deepseek-ai-dsh-tool-simple-ralph/known-limitations-and-deferred-work:
+  en: 464fa30dacbed342
+  zh: 70f523946a15e8d0
+/deepseek-ai-dsh-tool-simple-ralph/known-limitations-and-deferred-work/dev-note:
+  en: e67f633dc6fe7773
+  zh: 6c5f9788c6536776
